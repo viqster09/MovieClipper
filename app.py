@@ -24,7 +24,7 @@ with st.sidebar:
     st.header("⚙️ Navigation")
     mode = st.radio("Mode de recommandation", [
         "Par contenu (à partir d'un film)",
-        "Collaboratif (à partir d'un utilisateur)
+        "Collaboratif (à partir d'un utilisateur)"
     ])
     st.markdown("---")
     st.markdown(f"**Catalogue :** {len(MOVIES)} films")
