@@ -64,7 +64,7 @@ components.html(f"""
 <a href="{PAYPAL_ME}" target="_blank"
 style="display:inline-block;padding:12px 22px;background:#0070ba;color:white;
 text-decoration:none;border-radius:8px;font-weight:700;font-family:Arial,sans-serif">
-💙 Soutenir Sillon avec PayPal
+💙 Soutenir Sillon avec un petit follow
 </a>
 </div>
 """, height=60)
