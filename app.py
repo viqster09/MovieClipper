@@ -33,12 +33,14 @@ with st.sidebar:
     st.markdown(f"**Utilisateurs :** {RATINGS.user_id.nunique()}")
     st.markdown("---")
     st.subheader("❤️ Soutenir Sillon")
-    st.caption("Si le projet vous plaît, vous pouvez le soutenir avec PayPal.")
+    st.caption("Si le projet vous plaît, vous pouvez le soutenir avec Instagram et github.")
 
     # IMPORTANT : remplace cette URL par TON lien PayPal.Me ou ton lien de don.
-    PAYPAL_URL = "https://www.paypal.com/donate"
+    PAYPAL_URL = "https://www.instagram.com/viqster09/"
+    PAYPAL_URLL = "https://github.com/viqster09"
 
-    st.link_button("💙 Faire un don PayPal", PAYPAL_URL, use_container_width=True)
+    st.link_button("💙 Lache ton follow instagram", PAYPAL_URL, use_container_width=True)
+    st.link_button("💙 Lache ton follow github", PAYPAL_URLL, use_container_width=True)
 
 if mode == "Par contenu (à partir d'un film)":
     st.subheader("🎯 Recommandation par contenu")
@@ -76,32 +78,18 @@ elif mode == "Collaboratif (à partir d'un utilisateur)":
         if st.button("Calculer le RMSE"):
             st.metric("RMSE", f"{evaluate_rmse():.3f}")
 
-else:
-    st.subheader("🧠 Recommandation hybride")
-    st.write("Combine les recommandations par contenu et collaboratives selon une pondération personnalisable.")
-    matrix = build_rating_matrix()
-    user_id = st.selectbox("Choisissez un utilisateur", matrix.index)
-    alpha = st.slider("Pondération (0 = tout collaboratif, 1 = tout contenu)", 0.0, 1.0, 0.5, 0.1)
-    n = st.slider("Nombre de recommandations", 3, 10, 5)
-
-    if st.button("🎬 Recommander", type="primary", use_container_width=True):
-        results = hybrid_recommend(user_id, alpha=alpha, n=n).rename(columns={
-            "title": "Film", "hybrid_score": "Score hybride"
-        })
-        results["Score hybride"] = results["Score hybride"].round(3)
-        st.dataframe(results, hide_index=True, use_container_width=True)
 
 st.markdown("---")
-st.markdown('<div class="donation"><strong>❤️ Vous aimez Sillon ?</strong><br>Soutenez le projet avec un petit don.</div>', unsafe_allow_html=True)
+st.markdown('<div class="donation"><strong>❤️ Vous aimez Sillon ?</strong><br>Soutenez le projet avec un petit follow.</div>', unsafe_allow_html=True)
 
 # IMPORTANT : remplace cette URL par TON lien PayPal.Me ou ton lien de don.
-PAYPAL_ME = "https://www.paypal.com/donate"
+PAYPAL_ME = "https://www.instagram.com/viqster09"
 components.html(f"""
 <div style="text-align:center;margin-top:12px">
 <a href="{PAYPAL_ME}" target="_blank"
 style="display:inline-block;padding:12px 22px;background:#0070ba;color:white;
 text-decoration:none;border-radius:8px;font-weight:700;font-family:Arial,sans-serif">
-💙 Soutenir Sillon avec PayPal
+💙 Soutenir Sillon avec Instagram
 </a>
 </div>
 """, height=60)
