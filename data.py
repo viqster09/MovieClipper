@@ -114,16 +114,15 @@ def load_from_movielens(movies_csv: str, ratings_csv: str) -> tuple[pd.DataFrame
 # ---------------------------------------------------------------------------
 import os
 
-_ML_DIR = os.environ.get("MOVIELENS_DIR", os.path.join(os.path.dirname(__file__), "ml-latest-small"))
-_movies_csv = os.path.join(_ML_DIR, "movies.csv")
-_ratings_csv = os.path.join(_ML_DIR, "ratings.csv")
+_movies_csv = os.path.join( "movies.csv")
+_ratings_csv = os.path.join( "ratings.csv")
 
 if os.path.exists(_movies_csv) and os.path.exists(_ratings_csv):
     MOVIES, RATINGS = load_from_movielens(_movies_csv, _ratings_csv)
     print(f"[data] MovieLens chargé : {len(MOVIES)} films, {len(RATINGS)} notes")
 else:
     print("[data] MovieLens non trouvé -> jeu de données synthétique utilisé "
-          f"(placez movies.csv et ratings.csv dans '{_ML_DIR}' pour basculer)")
+          f"(placez movies.csv et ratings.csv pour basculer)")
 
 
 if __name__ == "__main__":
